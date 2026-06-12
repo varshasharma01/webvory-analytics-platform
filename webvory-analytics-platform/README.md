@@ -78,14 +78,8 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 2. Start PostgreSQL & Redis
+### 2. Start PostgreSQL & Redis (Ubuntu)
 
-**Option A — Docker (recommended)**
-```bash
-docker compose up -d postgres redis
-```
-
-**Option B — Local install (Ubuntu)**
 ```bash
 sudo apt install postgresql redis-server -y
 sudo service postgresql start
@@ -196,20 +190,6 @@ Open http://localhost:8089, set concurrent users (e.g. 100), spawn rate
 
 ---
 
-## Run Everything via Docker Compose
-
-```bash
-docker compose up -d
-```
-
-Then run ingestion + view creation once:
-```bash
-docker compose exec analytics_api python -m ingestion.ingest
-docker compose exec postgres psql -U postgres -d webvory_db -f /app/database/views.sql
-```
-
----
-
 ## Project Structure
 
 ```
@@ -230,8 +210,6 @@ webvory-analytics-platform/
 │   └── refresh.py
 ├── load_test/
 │   └── locustfile.py
-├── docker-compose.yml
-├── Dockerfile
 ├── requirements.txt
 └── README.md
 ```
